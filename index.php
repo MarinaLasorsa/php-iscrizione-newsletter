@@ -1,3 +1,20 @@
+<?php
+    //var_dump($_POST);
+
+    $email = $_POST["email"];
+
+    //var_dump($email);
+
+    function isEmailCorrect($email) {
+        if (str_contains($email, '@') && str_contains($email, '.')) {
+            return true;
+        } else {
+            return false;
+        };
+    };
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,17 +30,28 @@
             
             <form action="" method="POST">
                 <div class="input-group mb-3">
-                    <input type="text" name="email" class="form-control" placeholder="La tua mail">
+                    <input type="email" name="email" class="form-control" placeholder="La tua mail">
                     <button class="btn btn-primary" type="submit" value="submit">Invia</button>
                 </div>
             </form>
-            
+            <?php
+            if (isEmailCorrect($email) === true) {
+                ?>
+                <div class="alert alert-success" role="alert">
+                    Grazie per esserti iscritto!
+                </div>
+                <?php 
+            } else {
+                ?>
+                <div class="alert alert-danger" role="alert">
+                    L'indirizzo email inserito non è valido. Riprovare.
+                </div>
+                <?php
+            }
+            ?>
         </div>
     </main>
 </body>
 </html>
 
 
-<?php
-    var_dump($_POST);
-?>
