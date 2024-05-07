@@ -5,13 +5,7 @@
 
     //var_dump($email);
 
-    function isEmailCorrect($email) {
-        if (str_contains($email, '@') && str_contains($email, '.')) {
-            return true;
-        } else {
-            return false;
-        };
-    };
+    include __DIR__ . "/partials/utilities.php";
 ?>
 
 
@@ -25,31 +19,34 @@
 </head>
 <body>
     <main>
-        <div class="container">
-            <h2 class="text-center">Iscriviti alla nostra newsletter</h2>
-            
-            <form action="" method="POST">
-                <div class="input-group mb-3">
-                    <input type="email" name="email" class="form-control" placeholder="La tua mail">
-                    <button class="btn btn-primary" type="submit" value="submit">Invia</button>
-                </div>
-            </form>
-            <?php
-            if (isEmailCorrect($email) === true) {
-                ?>
-                <div class="alert alert-success" role="alert">
-                    Grazie per esserti iscritto!
-                </div>
-                <?php 
-            } else {
-                ?>
-                <div class="alert alert-danger" role="alert">
-                    L'indirizzo email inserito non è valido. Riprovare.
-                </div>
+        <section class="my-5">
+            <div class="container">
+                <h2 class="text-center">Iscriviti alla nostra newsletter</h2>
+                
+                <form action="" method="POST">
+                    <div class="input-group my-3">
+                        <input type="email" name="email" class="form-control" placeholder="La tua mail">
+                        <button class="btn btn-primary px-5" type="submit" value="submit">Invia</button>
+                    </div>
+                </form>
                 <?php
-            }
-            ?>
-        </div>
+                if (isEmailCorrect($email) === true) {
+                    ?>
+                    <div class="alert alert-success" role="alert">
+                        Grazie per esserti iscritto!
+                    </div>
+                    <?php 
+                } else {
+                    ?>
+                    <div class="alert alert-danger" role="alert">
+                        L'indirizzo email inserito non è valido. Riprovare.
+                    </div>
+                    <?php
+                }
+                ?>
+            </div>
+        </section>
+        
     </main>
 </body>
 </html>
